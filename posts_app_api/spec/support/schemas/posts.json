@@ -1,0 +1,34 @@
+{
+  "type": "object",
+  "required": ["data", "meta"],
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "attributes"],
+        "properties": {
+          "id": { "type": "string" },
+          "type": { "type": "string" },
+          "relationships": { "type": "object" },
+          "attributes": {
+            "type": "object",
+            "required": ["body", "likes_count", "published_at"],
+            "properties": {
+              "body": { "type": "string" },
+              "likes_count": { "type": "integer" },
+              "published_at": { "type": "date-time" }
+            }
+          }
+        }
+      }
+    },
+    "meta": {
+      "type": "object",
+      "required": ["total_count"],
+      "properties": {
+        "total_count": { "type": "integer" }
+      }
+    }
+  }
+}

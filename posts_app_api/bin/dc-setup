@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+echo "=>  Build"
+
+export CURRENT_UID=$(id -u):$(id -g)
+
+docker-compose up --remove-orphans -d db
+docker-compose build app
+
+echo "=>  Setup"
+docker-compose run app bin/ci-setup

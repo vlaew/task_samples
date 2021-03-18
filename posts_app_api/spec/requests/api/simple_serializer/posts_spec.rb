@@ -1,0 +1,14 @@
+# frozen_string_literal: true
+
+require 'rails_helper'
+
+RSpec.describe 'Api::SimpleSerializer::Posts', type: :request do
+  include RequestHelpers
+  include AuthHelper
+
+  before(:all) do
+    @endpoint_path = '/api/simple_serializer/posts'
+  end
+
+  it_behaves_like 'posts endpoint'
+end

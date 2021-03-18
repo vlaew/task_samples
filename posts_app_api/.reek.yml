@@ -1,0 +1,21 @@
+---
+detectors:
+  IrresponsibleModule:
+    enabled: false
+  UncommunicativeModuleName:
+    enabled: false
+  FeatureEnvy:
+    enabled: false
+
+directories:
+  "**/db/migrate/**":
+    FeatureEnvy:
+      enabled: false
+    UncommunicativeVariableName:
+      enabled: false
+  "**/spec/support/**":
+    UtilityFunction:
+      enabled: false
+  "**/app/controllers/**":
+    InstanceVariableAssumption:
+      enabled: false

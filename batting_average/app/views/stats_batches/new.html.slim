@@ -1,0 +1,8 @@
+.container.mt-4
+  .row
+    .col
+      = form_for(@stats_batch) do |form|
+        .form-group
+          = form.file_field :csv_file, direct_upload: true
+
+        = form.submit 'Submit', class: 'btn btn-primary'

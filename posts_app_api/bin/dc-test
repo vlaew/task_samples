@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+echo "=>  Run tests"
+
+export CURRENT_UID=$(id -u):$(id -g)
+
+docker-compose run app bin/rspec

@@ -1,0 +1,10 @@
+---
+team_a:
+  team_id: team_a
+  year_id: 2017
+  name: Team A
+
+team_b:
+  team_id: team_b
+  year_id: 2017
+  name: Team B

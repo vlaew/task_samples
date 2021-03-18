@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      DATABASE_URL: postgresql://root@db:5432/db_name
+      DISABLE_SPRING: 1
+      MALLOC_ARENA_MAX: 2
+      PARALLEL_WORKERS: 1
+      PGHOST: db
+      PGUSER: root
+      RAILS_ENV: ${RAILS_ENV:-test}
+    networks:
+      default:
+    user: ${CURRENT_UID:?"Please run as follows 'CURRENT_UID=$(id -u):$(id -g) docker-compose up'"}
+
+    volumes:
+      - .:/home/circleci/project:cached
+      - gems:/home/circleci/.rubygems
+      - cache:/home/circleci/.cache
+
+    depends_on:
+      - db
+
+  db:
+    image: circleci/postgres:alpine
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_DB: db_name
+    volumes:
+      - pg:/var/lib/postgresql/data
+
+volumes:
+  gems:
+  cache:
+  pg:

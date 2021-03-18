@@ -1,0 +1,24 @@
+---
+john_doe_team_a:
+  stats_batch: :base_batch
+  player_id: john_doe
+  team_id: team_a
+  year_id: 2017
+  stint: 1
+  batting_average: 0.725
+
+john_doe_team_b:
+  stats_batch: :base_batch
+  player_id: john_doe
+  team_id: team_b
+  year_id: 2017
+  stint: 2
+  batting_average: 0.250
+
+jane_doe_team_a:
+  stats_batch: :base_batch
+  player_id: jane_doe
+  team_id: team_a
+  year_id: 2017
+  stint: 1
+  batting_average: 0.725

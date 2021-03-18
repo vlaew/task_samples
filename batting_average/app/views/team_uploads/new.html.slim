@@ -1,0 +1,8 @@
+.container.mt-4
+  .row
+    .col
+      = form_for(:team_upload, url: team_uploads_path, method: :post) do |form|
+        .form-group
+          = form.file_field :csv_file
+
+        = form.submit 'Submit', class: 'btn btn-primary'

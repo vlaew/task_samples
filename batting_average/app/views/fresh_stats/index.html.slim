@@ -1,0 +1,47 @@
+.container.mt-4
+  .row
+    .col
+      .row.mb-2
+        .col
+          = "Showing stats uploaded at #{@stats_carrier.version}"
+      .row
+        .col
+          = form_for @stats_carrier.filter, url: root_path, method: :get do |form|
+            .row
+              .col-4.form-group
+                = form.label :year_id
+                = form.select :year_id,
+                        @stats_carrier.filter.years_range,
+                        { include_blank: true },
+                        class: 'form-control'
+              .col-4.form-group
+                = form.label :player_id
+                = form.text_field :player_id, class: 'form-control js-autocomplete', data: { url: player_ids_path }
+            .row
+              .col-8.form-group.d-flex.justify-content-start
+                .d-flex.align-items-center.justify-content-between
+                  = form.submit 'Filter', class: 'btn btn-primary mr-4'
+                  = link_to 'Reset', root_path
+
+      .row.d-flex.justify-content-center
+        = paginate @stats_carrier.player_stats, nav_class: 'col-12'
+
+      .table-responsive
+        table.table.table-striped.table-hover
+          thead.thead-light
+            tr
+              th scope='col'
+                = 'playerID'
+              th scope='col'
+                = 'yearId'
+              th scope='col'
+                = 'Team name(s)'
+              th scope='col'
+                = 'Batting Average'
+          tbody
+            - @stats_carrier.player_stats.each do |player_stat|
+              tr
+                td = player_stat.player_id
+                td = player_stat.year_id
+                td = player_stat.teams.join(', ')
+                td = player_stat.batting_average.round(3)
